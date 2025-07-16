@@ -48,7 +48,7 @@ const ShopApp = () => {
     loop: true,
     mode: "free",
     renderMode: "performance",
-    slides: { perView: 1.5, spacing: 15 },
+    slides: { perView: 1.2, spacing: 15 },
     breakpoints: {
       "(min-width: 640px)": { slides: { perView: 2, spacing: 15 } },
       "(min-width: 768px)": { slides: { perView: 3, spacing: 20 } },
@@ -86,7 +86,7 @@ const ShopApp = () => {
               Smart Shopping <br /> Trending Fashion
             </h1>
             <Button
-              className="w-full sm:w-[200px] bg-white text-black text-lg sm:text-xl font-semibold"
+              className="w-full sm:w-[200px] px-4 py-2 text-sm sm:text-lg bg-white text-black font-semibold"
               onClick={() => {
                 const section = document.getElementById("shop");
                 section?.scrollIntoView({ behavior: "smooth" });
@@ -114,12 +114,12 @@ const ShopApp = () => {
                 <Image
                   src={dress.image}
                   alt={dress.name}
-                  className="w-full h-[300px] object-cover rounded-t"
+                  className="w-full h-[250px] sm:h-[300px] object-cover rounded-t"
                   width={400}
                   height={300}
                 />
               </CardHeader>
-              <CardContent className="p-4">
+              <CardContent className="p-3 sm:p-4">
                 <CardTitle className="text-lg sm:text-xl font-semibold mb-1">
                   {dress.name}
                 </CardTitle>
@@ -133,7 +133,7 @@ const ShopApp = () => {
       </div>
 
       {/* Carousel Section */}
-      <div className="w-full px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="w-full px-4 sm:px-6 max-w-7xl mx-auto mt-12">
         <CarouselDemo />
       </div>
 
@@ -158,7 +158,7 @@ const ShopApp = () => {
                 alt={category.title}
                 width={400}
                 height={300}
-                className="w-full h-80 object-cover"
+                className="w-full h-60 sm:h-80 object-cover"
               />
               <div className="p-4 text-center bg-white">
                 <h3 className="text-lg font-semibold text-gray-700">
@@ -171,7 +171,7 @@ const ShopApp = () => {
       </div>
 
       {/* Promo Banner */}
-      <div className="relative w-full h-[300px] mt-20">
+      <div className="relative w-full h-[200px] sm:h-[300px] mt-20">
         <Image
           src="/images/shop8ban.jpeg"
           alt="Big Sale Banner"
@@ -182,10 +182,10 @@ const ShopApp = () => {
           <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3">
             Big Deals on Top Brands 🎉
           </h2>
-          <p className="text-white text-lg mb-3">
+          <p className="text-white text-sm sm:text-lg mb-3">
             Upto 70% off on selected styles. Limited time offer!
           </p>
-          <Button className="bg-white text-black text-lg font-semibold">
+          <Button className="bg-white text-black text-sm sm:text-lg font-semibold">
             Explore Now
           </Button>
         </div>
@@ -213,7 +213,7 @@ const ShopApp = () => {
                 alt={`New item ${index + 1}`}
                 width={250}
                 height={300}
-                className="w-full h-[300px] object-cover"
+                className="w-full h-[250px] sm:h-[300px] object-cover"
               />
             </div>
           ))}
@@ -256,7 +256,7 @@ const ShopApp = () => {
 
       {/* Footer */}
       <footer className="mt-20 bg-gray-900 text-white py-10 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div>
             <h3 className="text-xl font-bold mb-4">SmartShop</h3>
             <p className="text-gray-300">
@@ -290,7 +290,7 @@ const ShopApp = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-2">Follow Us</h4>
-            <div className="flex flex-wrap gap-4 text-gray-300">
+            <div className="flex justify-center md:justify-start gap-4 text-gray-300">
               <a href="#">Facebook</a>
               <a href="#">Instagram</a>
               <a href="#">Twitter</a>
