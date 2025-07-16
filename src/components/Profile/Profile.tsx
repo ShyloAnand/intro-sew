@@ -73,7 +73,7 @@ const ShopApp = () => {
       </div>
 
       {/* Banner */}
-      <div className="relative w-full h-[250px] sm:h-[350px]">
+      <div className="relative w-full aspect-[3/2] sm:aspect-[3/1]">
         <Image
           src="/images/meesho .webp"
           alt="Banner"
@@ -111,13 +111,14 @@ const ShopApp = () => {
           filteredDresses.map((dress) => (
             <Card key={dress.id} className="hover:shadow-xl transition-shadow">
               <CardHeader className="p-0">
-                <Image
-                  src={dress.image}
-                  alt={dress.name}
-                  className="w-full h-[250px] sm:h-[300px] object-cover rounded-t"
-                  width={400}
-                  height={300}
-                />
+                <div className="w-full aspect-[3/4] relative">
+                  <Image
+                    src={dress.image}
+                    alt={dress.name}
+                    fill
+                    className="object-cover rounded-t"
+                  />
+                </div>
               </CardHeader>
               <CardContent className="p-3 sm:p-4">
                 <CardTitle className="text-lg sm:text-xl font-semibold mb-1">
@@ -142,36 +143,40 @@ const ShopApp = () => {
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
-          {[
-            { title: "Western Wear", image: "/images/shop10.jpg" },
-            { title: "Traditional", image: "/images/shop11.jpg" },
-            { title: "Office Casuals", image: "/images/shop9.jpg" },
-            { title: "Party Wear", image: "/images/shop14.jpg" },
-          ].map((category, index) => (
-            <div
-              key={index}
-              className="rounded-lg overflow-hidden shadow hover:scale-105 transition-transform duration-300"
-            >
-              <Image
-                src={category.image}
-                alt={category.title}
-                width={400}
-                height={300}
-                className="w-full h-60 sm:h-80 object-cover"
-              />
-              <div className="p-4 text-center bg-white">
-                <h3 className="text-lg font-semibold text-gray-700">
-                  {category.title}
-                </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {["shop10.jpg", "shop11.jpg", "shop9.jpg", "shop14.jpg"].map(
+            (img, index) => (
+              <div
+                key={index}
+                className="rounded-lg overflow-hidden shadow hover:scale-105 transition-transform duration-300"
+              >
+                <div className="w-full aspect-[3/4] relative">
+                  <Image
+                    src={`/images/${img}`}
+                    alt="category"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 text-center bg-white">
+                  <h3 className="text-lg font-semibold text-gray-700">
+                    {img.includes("10")
+                      ? "Western Wear"
+                      : img.includes("11")
+                      ? "Traditional"
+                      : img.includes("9")
+                      ? "Office Casuals"
+                      : "Party Wear"}
+                  </h3>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
 
       {/* Promo Banner */}
-      <div className="relative w-full h-[200px] sm:h-[300px] mt-20">
+      <div className="relative w-full aspect-[4/2] mt-20">
         <Image
           src="/images/shop8ban.jpeg"
           alt="Big Sale Banner"
@@ -198,22 +203,21 @@ const ShopApp = () => {
         </h2>
         <div className="flex overflow-x-auto space-x-6 scrollbar-hide pb-4">
           {[
-            "/images/shop19.jpg",
-            "/images/shop22.jpg",
-            "/images/shop21.jpg",
-            "/images/shop23.jpg",
-            "/images/shop24.jpg",
+            "shop19.jpg",
+            "shop22.jpg",
+            "shop21.jpg",
+            "shop23.jpg",
+            "shop24.jpg",
           ].map((src, index) => (
             <div
               key={index}
-              className="min-w-[250px] rounded-lg overflow-hidden shadow hover:scale-105 transition-all duration-300"
+              className="min-w-[250px] aspect-[3/4] rounded-lg overflow-hidden shadow hover:scale-105 transition-all duration-300 relative"
             >
               <Image
-                src={src}
+                src={`/images/${src}`}
                 alt={`New item ${index + 1}`}
-                width={250}
-                height={300}
-                className="w-full h-[250px] sm:h-[300px] object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           ))}
@@ -227,22 +231,21 @@ const ShopApp = () => {
         </h2>
         <div ref={sliderRef} className="keen-slider">
           {[
-            "/images/shop16.jpg",
-            "/images/shop15.jpg",
-            "/images/shop12.jpg",
-            "/images/shop17.jpg",
-            "/images/shop20.jpg",
+            "shop16.jpg",
+            "shop15.jpg",
+            "shop12.jpg",
+            "shop17.jpg",
+            "shop20.jpg",
           ].map((src, index) => (
             <div
               key={index}
-              className="keen-slider__slide rounded overflow-hidden"
+              className="keen-slider__slide rounded overflow-hidden aspect-[3/4] relative"
             >
               <Image
-                src={src}
+                src={`/images/${src}`}
                 alt={`Trending ${index + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-[250px] sm:h-[300px] object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           ))}
