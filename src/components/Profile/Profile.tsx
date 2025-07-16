@@ -48,12 +48,13 @@ const ShopApp = () => {
     loop: true,
     mode: "free",
     renderMode: "performance",
-    slides: { perView: 3, spacing: 15 },
+    slides: { perView: 1.5, spacing: 15 },
     breakpoints: {
-      "(min-width: 768px)": { slides: { perView: 4, spacing: 20 } },
+      "(min-width: 640px)": { slides: { perView: 2, spacing: 15 } },
+      "(min-width: 768px)": { slides: { perView: 3, spacing: 20 } },
       "(min-width: 1024px)": { slides: { perView: 5, spacing: 25 } },
     },
-    created: (slider: { next: () => void }) => {
+    created: (slider) => {
       setInterval(() => slider.next(), 2500);
     },
   });
@@ -61,7 +62,7 @@ const ShopApp = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Search */}
-      <div className="px-6 mt-8 max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 mt-8 max-w-7xl mx-auto">
         <input
           type="text"
           placeholder="Search dresses..."
@@ -72,20 +73,20 @@ const ShopApp = () => {
       </div>
 
       {/* Banner */}
-      <div className="relative w-full h-[350px]">
+      <div className="relative w-full h-[250px] sm:h-[350px]">
         <Image
           src="/images/meesho .webp"
           alt="Banner"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-end px-10 bg-black/40">
+        <div className="absolute inset-0 flex items-center justify-end px-4 sm:px-10 bg-black/40">
           <div className="max-w-[400px] text-white text-right space-y-5">
-            <h1 className="text-4xl font-extrabold leading-snug drop-shadow">
+            <h1 className="text-2xl sm:text-4xl font-extrabold leading-snug drop-shadow">
               Smart Shopping <br /> Trending Fashion
             </h1>
             <Button
-              className="w-[200px] bg-white text-black text-xl font-semibold"
+              className="w-full sm:w-[200px] bg-white text-black text-lg sm:text-xl font-semibold"
               onClick={() => {
                 const section = document.getElementById("shop");
                 section?.scrollIntoView({ behavior: "smooth" });
@@ -100,7 +101,7 @@ const ShopApp = () => {
       {/* Product Grid */}
       <div
         id="shop"
-        className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pt-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-12"
       >
         {filteredDresses.length === 0 ? (
           <p className="col-span-full text-center text-gray-500">
@@ -113,13 +114,13 @@ const ShopApp = () => {
                 <Image
                   src={dress.image}
                   alt={dress.name}
-                  className="w-full h-[400px] object-cover rounded-t"
+                  className="w-full h-[300px] object-cover rounded-t"
                   width={400}
                   height={300}
                 />
               </CardHeader>
               <CardContent className="p-4">
-                <CardTitle className="text-xl font-semibold mb-1">
+                <CardTitle className="text-lg sm:text-xl font-semibold mb-1">
                   {dress.name}
                 </CardTitle>
                 <p className="text-lg text-pink-600 font-bold">
@@ -130,12 +131,14 @@ const ShopApp = () => {
           ))
         )}
       </div>
-      <div className="w-[1270px]">
+
+      {/* Carousel Section */}
+      <div className="w-full px-4 sm:px-6 max-w-7xl mx-auto">
         <CarouselDemo />
       </div>
 
       {/* Shop by Category */}
-      <div className="px-6 max-w-7xl mx-auto mt-16">
+      <div className="px-4 sm:px-6 max-w-7xl mx-auto mt-16">
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
           Shop by Category
         </h2>
@@ -175,8 +178,8 @@ const ShopApp = () => {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-start px-12">
-          <h2 className="text-4xl font-bold text-white mb-3">
+        <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-start px-4 sm:px-12">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3">
             Big Deals on Top Brands 🎉
           </h2>
           <p className="text-white text-lg mb-3">
@@ -189,7 +192,7 @@ const ShopApp = () => {
       </div>
 
       {/* Just Dropped */}
-      <div className="mt-20 px-6 max-w-7xl mx-auto">
+      <div className="mt-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Just Dropped 🔥
         </h2>
@@ -217,8 +220,8 @@ const ShopApp = () => {
         </div>
       </div>
 
-      {/* 🔁 Moving Slider */}
-      <div className="mt-24 px-6 max-w-7xl mx-auto">
+      {/* Trending Picks Slider */}
+      <div className="mt-24 px-4 sm:px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Trending Picks 🧵
         </h2>
@@ -239,17 +242,20 @@ const ShopApp = () => {
                 alt={`Trending ${index + 1}`}
                 width={400}
                 height={300}
-                className="w-full h-[300px] object-cover"
+                className="w-full h-[250px] sm:h-[300px] object-cover"
               />
             </div>
           ))}
         </div>
       </div>
-      <div className="bg-white">
+
+      {/* Accordion Section */}
+      <div className="bg-white px-4 sm:px-6 mt-12">
         <AccordionDemo />
       </div>
+
       {/* Footer */}
-      <footer className="mt-15 bg-gray-900 text-white py-10 px-6">
+      <footer className="mt-20 bg-gray-900 text-white py-10 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">SmartShop</h3>
@@ -284,7 +290,7 @@ const ShopApp = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-2">Follow Us</h4>
-            <div className="flex gap-4 text-gray-300">
+            <div className="flex flex-wrap gap-4 text-gray-300">
               <a href="#">Facebook</a>
               <a href="#">Instagram</a>
               <a href="#">Twitter</a>
@@ -296,9 +302,9 @@ const ShopApp = () => {
         </p>
       </footer>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top */}
       <Button
-        className="fixed bottom-6 right-6 bg-pink-600 text-white rounded-full px-4 py-2 shadow-lg hover:bg-pink-700"
+        className="fixed bottom-4 right-4 bg-pink-600 text-white rounded-full px-4 py-2 text-sm sm:text-base shadow-lg hover:bg-pink-700"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         ↑ Top
