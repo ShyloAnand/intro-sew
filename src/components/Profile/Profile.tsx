@@ -101,7 +101,7 @@ const ShopApp = () => {
       {/* Product Grid */}
       <div
         id="shop"
-        className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-12"
       >
         {filteredDresses.length === 0 ? (
           <p className="col-span-full text-center text-gray-500">
@@ -121,10 +121,10 @@ const ShopApp = () => {
                 </div>
               </CardHeader>
               <CardContent className="p-3 sm:p-4">
-                <CardTitle className="text-lg sm:text-xl font-semibold mb-1">
+                <CardTitle className="text-sm sm:text-lg font-semibold mb-1 text-center">
                   {dress.name}
                 </CardTitle>
-                <p className="text-lg text-pink-600 font-bold">
+                <p className="text-sm sm:text-lg text-pink-600 font-bold text-center">
                   ₹{dress.price}
                 </p>
               </CardContent>
@@ -143,7 +143,7 @@ const ShopApp = () => {
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {["shop10.jpg", "shop11.jpg", "shop9.jpg", "shop14.jpg"].map(
             (img, index) => (
               <div
