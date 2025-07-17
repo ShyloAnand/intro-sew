@@ -33,7 +33,12 @@ const CartPage = () => {
                     className="rounded-lg object-cover"
                   />
                   <CardTitle>{item.name}</CardTitle>
+                  <CardTitle>
+                    {item.name}
+                    {item.quantity > 1 && ` (x${item.quantity})`}
+                  </CardTitle>
                 </CardHeader>
+
                 <CardContent>
                   <p className="font-semibold mb-2">₹{item.price}</p>
                   <Button
